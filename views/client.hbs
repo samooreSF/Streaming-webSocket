@@ -1,0 +1,37 @@
+<h1>Welcome to Satchel Moore's Broadcast</h1>
+<img src="">
+<div id="messages-page">
+  <div id="messages">
+    <h2>Messages</h2>
+
+    {{#unless messages}}
+      <p>Sorry, no messages. :(</p>
+    {{else}}
+      <ol class="message-list">
+        {{#each messages}}
+          <li>
+            <div class="message-body">
+              {{body}}
+            </div>
+          </li>
+        {{/each}}
+      </ol>
+    {{/unless}}
+    <form id="message-form" method="POST" action="/messages">
+      <textarea id="message-body-input" name="body" placeholder="Enter a message here."></textarea>
+      <button type="submit">Post Message</button>
+    </form>
+  </div>
+</div>
+<script>
+    // get img dom element
+    const img = document.querySelector('img');
+
+    const WS_URL = location.origin.replace(/^http/, 'ws');
+    const ws = new WebSocket(WS_URL);
+    ws.onopen = () => console.log(`Connected to ${WS_URL}`);
+    ws.onmessage = message => {
+        // set the base64 string to the src tag of the image
+        img.src = message.data;
+    }
+</script>
