@@ -20,7 +20,7 @@
   "homepage": "https://github.com/jazheng1/Streaming-webSocket#readme",
   "dependencies": {
     "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-handlebars": "^4.0.3",
     "express-promise-router": "^3.0.3",
     "hbs": "^4.1.1",
